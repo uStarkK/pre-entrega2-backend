@@ -1,0 +1,36 @@
+<div>
+    <h1>Bienvenido al carrito!</h1>
+    {{#if items}}
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
+        {{#each items}}
+        <div style="display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: rgb(0, 0, 0);
+    margin-top: 3%;
+    background-color: rgb(201, 195, 195);
+    width: 15%;
+    border-radius: 10px;
+    text-align: center;
+    padding-bottom: 1%;
+    margin-right: 3%;">
+            <div>
+                <h1>
+                    {{this.productId.title}}
+                </h1>
+                <h2>
+                    ${{this.productId.price}}
+                </h2>
+                <h2>
+                    Amount: {{this.quantity}}
+                </h2>
+                <h2>
+                    Category: {{this.productId.category}}
+                </h2>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{else}}
+    Your cart is empty!
+    {{/if}}
