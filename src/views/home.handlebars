@@ -17,22 +17,26 @@
     text-align: center;
     padding-bottom: 1%;
     margin-right: 3%;">
-            <div>
-                <h1>
-                    {{this.title}}
-                </h1>
-                <h2>
-                    ${{this.price}}
-                </h2>
-                <h2>
-                    Stock:{{this.stock}}
-                </h2>
-                <h2>
-                    Category: {{this.category}}
-                </h2>
-            </div>
+            <a href="/{{this._id}}" style="text-decoration: none; color:black">
+                <div>
+                    <h1>
+                        {{this.title}}
+                    </h1>
+                    <h2>
+                        ${{this.price}}
+                    </h2>
+                    <h2>
+                        Stock:{{this.stock}}
+                    </h2>
+                    <h2>
+                        Category: {{this.category}}
+                    </h2>
+                </div>
+            </a>
             <button onclick="addProductToCart()">Add to cart</button>
         </div>
+
+
         {{/each}}
     </div>
     {{else}}
