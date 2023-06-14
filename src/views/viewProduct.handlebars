@@ -1,5 +1,21 @@
+<script src="/js/home.js"></script>
 <div>
     <h1>Bienvenido a la lista de productos!</h1>
+    <div id="goToCart">
+        <script>
+            let link = document.createElement('a');
+
+            // Set the href attribute
+            link.href = `/carts/${cartId}`;
+
+            // Set the link text
+            link.innerText = 'Go to cart';
+
+            // Appends the element to "goToCart" id. In this case, a div acting as a container
+            let container = document.getElementById('goToCart');
+            container.appendChild(link);
+        </script>
+    </div>
     {{#if title}}
     <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;">
         <div style="display: flex;
@@ -30,7 +46,7 @@
                     Category: {{category}}
                 </h2>
             </div>
-            <button onclick="addProductToCart()">Add to cart</button>
+            <button onclick="addProductToCart(`{{id}}`)">Add to cart</button>
         </div>
     </div>
     {{else}}

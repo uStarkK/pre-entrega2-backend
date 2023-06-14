@@ -46,8 +46,8 @@ productsRender.get("/:pid", async (req, res) => {
         const productId = req.params.pid;
 
         const product = await ProductsModel.findOne({ _id: productId }).lean().exec()
-        const {title, price, desc, stock, category} = product
-        return res.status(200).render("viewProduct", {title, price, desc, stock, category})
+        const {title, price, desc, stock, category, _id} = product
+        return res.status(200).render("viewProduct", {title, price, desc, stock, category, id: _id})
     } catch (err) {
         console.log(err)
     }

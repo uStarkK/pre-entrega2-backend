@@ -139,18 +139,34 @@ export const updateProductInCart = async (req, res) =>{
                 }
             },
             {
-                $set: { 'items.$.quantity': data.quantity || 1 }
+                $set: { 'items.$.quantity': data.quantity  }
             },
             {
-                new: true
+                new: true,
+                runValidators: true
             }
         );
         if (result) {
             // Item already exists in the cart, quantity modified 
+            const updatedCart = await CartModel.findOneAndUpdate(
+                {
+                    _id: cartId,
+                    items: {
+                        $elemMatch: { productId: productId }
+                    }
+                },
+                {
+                    $inc: { 'items.$.quantity': 1  }
+                },
+                {
+                    new: true,
+                    runValidators: true
+                }
+            );
             res.status(200).json({
                 status: "success",
                 msg: "Quantity modified",
-                data: result
+                data: updatedCart
             })
         } else {
             // Item not found, add the product to the cart
