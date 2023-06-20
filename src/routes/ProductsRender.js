@@ -1,6 +1,5 @@
 import express from 'express';
 import { ProductsModel } from '../DAO/models/products.model.js';
-import CartService from '../services/CartService.js';
 
 
 
@@ -14,7 +13,6 @@ export const productsRender = express.Router();
 
 productsRender.get("/", async (req, res, next) => {
     try {
-
         const { limit, page, sort, query } = req.query;
         const queryMongo = {}
         if (query) {
